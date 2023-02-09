@@ -1,16 +1,15 @@
 import {useDispatch, useSelector} from "react-redux";
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Pagination} from 'antd';
 import {showInfo} from "../service/userService";
 
 const User = () => {
-    const [page, setPage] = useState(1)
     const dispatch = useDispatch()
     let dataUser = useSelector(state => {
+        console.log(state.user)
         return state.user.infoProfile.results
     })
     let chosePage = async (number) => {
-        await setPage(number)
         await dispatch(showInfo(number))
     }
     useEffect(async () => {
